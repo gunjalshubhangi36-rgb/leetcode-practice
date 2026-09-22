@@ -1,20 +1,20 @@
 class Solution(object):
     def lengthOfLongestSubstring(self, s):
-        charSet = set()
+        charset = set()
         left = 0
-        maxLength = 0
+        maxlength = 0
 
         for right in range(len(s)):
 
-            while s[right] in charSet:
-                charSet.remove(s[left])
+            while s[right] in charset:
+                charset.remove(s[left])
                 left += 1
+            
+            charset.add(s[right])
 
-            charSet.add(s[right])
+            maxlength = max(maxlength, right - left + 1)
 
-            maxLength = max(maxLength, right - left + 1)
-
-        return maxLength
+        return maxlength
         """
         :type s: str
         :rtype: int
